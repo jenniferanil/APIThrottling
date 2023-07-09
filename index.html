@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>API Throttling System</title>
+</head>
+<body>
+    <h1>API Throttling System - Example</h1>
+    <p>Make a request to the API by clicking the button below:</p>
+    <button id="requestButton">Make API Request</button>
+    <p id="pShow"></p>
+
+    <script>
+        document.getElementById('requestButton').addEventListener('click', function() {
+            fetch('apirequest.php', {
+                method: 'GET',
+                mode: 'cors'
+            })
+            .then(function(response) {
+                return response.text();
+            })
+            .then(function(data) {
+                console.log(data);
+                const pShow = document.getElementById("pShow");
+                pShow.textContent = data;
+            })
+            .catch(function(error) {
+                console.error('Error:', error);
+            });
+        });
+    </script>
+</body>
+</html>
